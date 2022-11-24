@@ -92,12 +92,17 @@ public class Temperaturgraph {
 
         for (int i = 0; i < anzahlZeilen; i++) {
             int aktuelleTemperatur = maximaleTemperatur - i;
-            System.out.print(aktuelleTemperatur + "  ");
+            if (aktuelleTemperatur < 10) {
+                System.out.print(aktuelleTemperatur + "   ");
+            }
+            else {
+                System.out.print(aktuelleTemperatur + "  ");
+            }
             for (int j = 0; j < temperaturen.length; j++) {
                 if (temperaturen[j] >= aktuelleTemperatur) {
-                    System.out.print("# ");
+                    System.out.print("#");
                 } else {
-                    System.out.print("- ");
+                    System.out.print(" ");
                 }
             }
             System.out.println();
