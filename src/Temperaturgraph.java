@@ -1,20 +1,29 @@
 public class Temperaturgraph {
 
+    // Instanzvariablen
     private int jahr;
 
+    // Variable zur Speicherung der Temperaturwerte (default: -1)
     private int[] temperaturen = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
+    // Konstruktor
     public Temperaturgraph(int jahr) {
         this.jahr = jahr;
     }
 
+    // Methode, zum Hinzufügen einer Temperatur
     public void addTemperatur(int monat, int temperatur) {
 
+        // prüft, ob monat nicht valide ist
         if (monat < 1 || monat > 12) {
             System.out.println("Monat " + monat + ": Monat muss >= 1 und <= 12 sein.");
-        } else if (temperatur < 0) {
+        }
+        // prüft, ob temperatur nicht valide ist
+        else if (temperatur < 0) {
             System.out.println("Monat " + monat + ": Temperatur mus >= 0 sein.");
-        } else {
+        }
+        else {
+            // fügt die übergebene Temperatur dem jeweiligen Monat hinzu
             switch (monat) {
                 case 1:
                     temperaturen[0] = temperatur;
@@ -57,19 +66,24 @@ public class Temperaturgraph {
 
     }
 
+    // Methode prüft, ob alle Monate einen Temperaturwert haben
     public void checkData() {
         for (int i = 0; i < temperaturen.length; i++) {
             if (temperaturen[i] == -1) {
                 int fehlerMonat = i + 1;
-                System.out.println("Monat " + fehlerMonat + " hat noch keine Temperatur.");
+                System.out.println("Monat " + fehlerMonat + " hat noch keinen Temperaturwert oder der Monat fehlt.");
                 System.exit(0);
             }
         }
     }
 
+    // Methode erzeugt den Temperaturgraphen
     public void plotGraph() {
 
+        // ruft die Methode checkData auf um zu prüfen, ob ein Graph erstellt werden kann
         checkData();
+
+        // ermittelt die höchste Temperatur
         int maximaleTemperatur = temperaturen[0];
         for (int i = 0; i < temperaturen.length; i++) {
             if (temperaturen[i] > maximaleTemperatur) {
@@ -77,6 +91,7 @@ public class Temperaturgraph {
             }
         }
 
+        // ermittelt die niedrigste Temperatur
         int minimaleTemperatur = temperaturen[0];
         for (int i = 0; i < temperaturen.length; i++) {
             if (temperaturen[i] < minimaleTemperatur) {
@@ -84,13 +99,16 @@ public class Temperaturgraph {
             }
         }
 
+        // printet das Jahr
         System.out.println("Jahr: " + jahr);
-        System.out.println("Minimale Temperatur: " + minimaleTemperatur);
-        System.out.println("Maximale Temperatur: " + maximaleTemperatur);
 
+        // berechnet die Anzahl der zu printenden Zeilen
         int anzahlZeilen = maximaleTemperatur - minimaleTemperatur + 1;
 
+        // printen der Zeilen
         for (int i = 0; i < anzahlZeilen; i++) {
+
+            // printet die Temperaturzahl inkl. der passenden Anzahl an Leerzeichen
             int aktuelleTemperatur = maximaleTemperatur - i;
             if (aktuelleTemperatur < 10) {
                 System.out.print(aktuelleTemperatur + "   ");
@@ -98,16 +116,24 @@ public class Temperaturgraph {
             else {
                 System.out.print(aktuelleTemperatur + "  ");
             }
+
             for (int j = 0; j < temperaturen.length; j++) {
+                // printet Symbol, falls Temperatur des Monats größer gleich der aktuellen Temperatur der Zeile ist
                 if (temperaturen[j] >= aktuelleTemperatur) {
                     System.out.print("#");
-                } else {
+                }
+                // printet Leerzeichen, falls Temperatur des Monats kleiner als Temperatur der Zeile ist
+                else {
                     System.out.print(" ");
                 }
+
+                // printet Leerzeichen zwischen Temperaturkennzeichnungen
+                System.out.print(" ");
             }
+
+            // printet Zeilenumbruch
             System.out.println();
         }
-
 
     }
 }
