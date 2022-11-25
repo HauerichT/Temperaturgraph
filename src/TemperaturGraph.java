@@ -1,4 +1,4 @@
-public class Temperaturgraph {
+public class TemperaturGraph {
 
     // Instanzvariablen
     private int jahr;
@@ -7,7 +7,7 @@ public class Temperaturgraph {
     private int[] temperaturen = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
     // Konstruktor
-    public Temperaturgraph(int jahr) {
+    public TemperaturGraph(int jahr) {
         this.jahr = jahr;
     }
 
