@@ -24,44 +24,7 @@ public class TemperaturGraph {
         }
         else {
             // fügt die übergebene Temperatur dem jeweiligen Monat hinzu
-            switch (monat) {
-                case 1:
-                    temperaturen[0] = temperatur;
-                    break;
-                case 2:
-                    temperaturen[1] = temperatur;
-                    break;
-                case 3:
-                    temperaturen[2] = temperatur;
-                    break;
-                case 4:
-                    temperaturen[3] = temperatur;
-                    break;
-                case 5:
-                    temperaturen[4] = temperatur;
-                    break;
-                case 6:
-                    temperaturen[5] = temperatur;
-                    break;
-                case 7:
-                    temperaturen[6] = temperatur;
-                    break;
-                case 8:
-                    temperaturen[7] = temperatur;
-                    break;
-                case 9:
-                    temperaturen[8] = temperatur;
-                    break;
-                case 10:
-                    temperaturen[9] = temperatur;
-                    break;
-                case 11:
-                    temperaturen[10] = temperatur;
-                    break;
-                case 12:
-                    temperaturen[11] = temperatur;
-                    break;
-            }
+            temperaturen[monat-1] = temperatur;
         }
 
     }
